@@ -1,34 +1,9 @@
 // const net = require('net');
 
 const { connect } = require('./client');  //connect looked like this before { connect } //this will return whole connect function
+const { setupInput } = require('./input');
 console.log('Connecting ...');
 connect(); //calling connect function we imported from client js
-
-// * Setup User Interface 
-// * Specifically, so that we can handle user input via stdin
-// */
-const setupInput = function () {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding('utf8');
-  stdin.resume();
-
-  const handleUserInput = function (key) {
-    if (key === '\u0003') {
-      process.exit();
-    }
-  }
-
-  // stdin.on('data', (key) => {
-  //   if (key === '\u0003') {
-  //     process.exit();
-  //   }
-  // });
-
-  stdin.on('data', (key) => handleUserInput(key));
-
-  return stdin;
-}
 
 setupInput();
 //  module.exports = connect
