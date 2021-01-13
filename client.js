@@ -7,6 +7,16 @@ const connect = function() {
     host: '135.23.222.131',
     port: 50542
   });
+
+  conn.on('connect', () => {
+    console.log('Successfully connected to the name server')
+  })
+
+
+conn.on('connect', () => {
+  conn.write('Name: SJA');
+});
+
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
