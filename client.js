@@ -2,10 +2,13 @@
 //const connect = require(../snake-client)
 const net = require('net'); //require is importing a different file into your current file ./ importing local file ../ parent folder
 //if no dots or slashes importing an actual module, net module does networking to allow connection between client and server
+const { IP, PORT, NAME } = require('./constants');
+
+
 const connect = function () {
   const conn = net.createConnection({ //creates a connection obj you can use to do other functions
-    host: '135.23.222.131', //host and port means this is the server were connection 
-    port: 50542          //only need to do this one time when importing net module
+    host: IP, //host and port means this is the server were connection 
+    port: PORT        //only need to do this one time when importing net module
   });                   //6-9 are instructions for how we can find the server and talk to it
 
   conn.on('connect', () => {
@@ -14,7 +17,7 @@ const connect = function () {
 
   //.on(condition, callback)
   conn.on('connect', () => {      //on is an event handler so whenever a specific event happens it runs a callback function
-    conn.write('Name: SJA');     //conn.write is what we are sending to the server
+    conn.write(`${NAME}`);     //conn.write is what we are sending to the server
   });
 
   conn.on('data', (data) => {     //when we receive data just console log this data
@@ -30,6 +33,7 @@ const connect = function () {
 module.exports = {
   connect    //export the connect function, send over an object called connect
 };
+
 //the connect in here refers to the entire connect function module.export is an object
 //we are redefining the module.exports object and creating a connect key which holds the connect value inside of it so we can shorthand
 
