@@ -22,8 +22,11 @@ const setupInput = function (conn) {
       conn.write("Move: right");
       console.log('Right');
     }
+    else if (key === 'd') {
+      conn.write("Say: what up?");
+    }
     else if (key === '\u0003') {
-      console.log('You Lose.');
+      console.log('Game over.');
       process.exit()
     }
   });  /// client in on connect from node.js

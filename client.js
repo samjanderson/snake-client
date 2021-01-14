@@ -28,7 +28,7 @@ const connect = function () {
 }
 
 module.exports = {
-  connect
+  connect    //export the connect function, send over an object called connect
 };
 //the connect in here refers to the entire connect function module.export is an object
 //we are redefining the module.exports object and creating a connect key which holds the connect value inside of it so we can shorthand
